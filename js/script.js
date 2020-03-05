@@ -1,8 +1,16 @@
-let computerMove = '';
-let playerMove = 'Nieznany ruch';
 let calcMove = Math.floor((Math.random()*3)+1);
 let playerInput = prompt('Wybierz ruch! 1 - kamień, 2 - papier, 3 - nożyce');
 
+console.log('Wyliczenie wartości');
+
+let computerMove = setValue(calcMove);
+let playerMove = setValue(playerInput);
+
+console.log('Sprawdzenie przypisania wartości:');
+console.log(computerMove);
+console.log(playerMove);
+
+/*
 if(playerInput == '1'){
     playerMove = 'kamień';
 } else if(playerInput == '2'){
@@ -28,7 +36,13 @@ if((computerMove == 'kamień' && playerMove == 'papier') || (computerMove == 'pa
 } else{
     printMessage('Komputer wygrał :(');
 }
-printMessage('');
-printMessage('Sprawdzenie:');
-printMessage('computerMove: ' + computerMove);
-printMessage('playerMove: ' + playerMove);
+
+*/
+
+showResult(computerMove, playerMove);
+
+console.log('Sprawdzenie dla wszystkich możliwości');
+console.log(setValue(1));
+console.log(setValue(2));
+console.log(setValue(3));
+console.log(setValue(4));
