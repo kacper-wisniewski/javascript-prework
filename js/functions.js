@@ -40,3 +40,13 @@ function showResult(argComputerMove, argPlayerMove){
 		printMessage('Przegrałeś :(');
 	}
 }
+
+function playGame(argPlayer){
+	clearMessages();
+    let calcMove = Math.floor((Math.random()*3)+1);
+	let computerMove = setValue(calcMove);
+	let playerInput = argPlayer;
+	let playerMove = setValue(playerInput);
+
+    showResult(computerMove, playerMove);
+}

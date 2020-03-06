@@ -1,0 +1,49 @@
+/* Var */
+
+$color-main: #4cd137;
+$color-light: #fff;
+
+$transition: .3s;
+
+/* Global */
+
+*, *::after, *::before{
+    box-sizing: border-box;
+}
+
+body{
+    margin: 0;
+    padding: 0;
+}
+
+/* Buttons */
+
+#buttons{
+    display: flex;
+    justify-content: center;
+    justify-items: center;
+}
+.btn{
+    height: 100px;
+    width: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    justify-items: center;
+    margin: 0 10px;
+    font-size: 56px;
+    border-radius: 50%;
+    color: $color-main;
+    transition: $transition;
+    i{
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        justify-items: center;
+    }
+    &:hover{
+        background: $color-main;
+        color: $color-light;
+    }
+}

@@ -1,0 +1,55 @@
+/* Var */
+/* Global */
+*, *::after, *::before {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+/* Buttons */
+#buttons {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: center;
+      justify-content: center;
+  -ms-grid-column-align: center;
+      justify-items: center;
+}
+
+.btn {
+  height: 100px;
+  width: 100px;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-direction: column;
+      flex-direction: column;
+  -ms-flex-pack: center;
+      justify-content: center;
+  -ms-grid-column-align: center;
+      justify-items: center;
+  margin: 0 10px;
+  font-size: 56px;
+  border-radius: 50%;
+  color: #4cd137;
+  transition: 0.3s;
+}
+
+.btn i {
+  margin: 0;
+  padding: 0;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: center;
+      justify-content: center;
+  -ms-grid-column-align: center;
+      justify-items: center;
+}
+
+.btn:hover {
+  background: #4cd137;
+  color: #fff;
+}
+/*# sourceMappingURL=style.css.map */
