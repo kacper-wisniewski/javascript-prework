@@ -12,8 +12,13 @@ $transition: .3s;
 }
 
 body{
+    text-align: center;
     margin: 0;
     padding: 0;
+}
+.container{
+    max-width: 1150px;
+    margin: 0 auto;
 }
 
 /* Buttons */
@@ -24,26 +29,38 @@ body{
     justify-items: center;
 }
 .btn{
+    position: relative;
+    background: transparent;
     height: 100px;
     width: 100px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    justify-items: center;
     margin: 0 10px;
-    font-size: 56px;
+    padding: 0;
     border-radius: 50%;
+    border: 3px solid $color-main;
     color: $color-main;
     transition: $transition;
-    i{
-        margin: 0;
-        padding: 0;
-        display: flex;
-        justify-content: center;
-        justify-items: center;
+    outline: none;
+    img{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+        margin: auto;
     }
     &:hover{
         background: $color-main;
         color: $color-light;
     }
+}
+
+
+/* MSG */
+
+#messages{
+    height: 150px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    justify-items: center;
+    font-size: 40px;
 }

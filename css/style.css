@@ -5,8 +5,14 @@
 }
 
 body {
+  text-align: center;
   margin: 0;
   padding: 0;
+}
+
+.container {
+  max-width: 1150px;
+  margin: 0 auto;
 }
 
 /* Buttons */
@@ -20,8 +26,35 @@ body {
 }
 
 .btn {
+  position: relative;
+  background: transparent;
   height: 100px;
   width: 100px;
+  margin: 0 10px;
+  padding: 0;
+  border-radius: 50%;
+  border: 3px solid #4cd137;
+  color: #4cd137;
+  transition: 0.3s;
+  outline: none;
+}
+
+.btn img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  margin: auto;
+}
+
+.btn:hover {
+  background: #4cd137;
+  color: #fff;
+}
+
+/* MSG */
+#messages {
+  height: 150px;
   display: -ms-flexbox;
   display: flex;
   -ms-flex-direction: column;
@@ -30,26 +63,6 @@ body {
       justify-content: center;
   -ms-grid-column-align: center;
       justify-items: center;
-  margin: 0 10px;
-  font-size: 56px;
-  border-radius: 50%;
-  color: #4cd137;
-  transition: 0.3s;
-}
-
-.btn i {
-  margin: 0;
-  padding: 0;
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-pack: center;
-      justify-content: center;
-  -ms-grid-column-align: center;
-      justify-items: center;
-}
-
-.btn:hover {
-  background: #4cd137;
-  color: #fff;
+  font-size: 40px;
 }
 /*# sourceMappingURL=style.css.map */
