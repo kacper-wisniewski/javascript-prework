@@ -3,6 +3,7 @@ function printMessage(msg, target) {
 	let div = document.createElement('div');
 	// Przypisanie divowi zawartości msg
 	div.innerHTML = msg;
+	div.classList.add('result')
 	// Przypisanie diva jako dziecko elementu o id 'message'
 	document.getElementById(target).appendChild(div);
 }
@@ -57,20 +58,25 @@ function whoWins(argLuckCoefficient, argPlayerMove) {
 
 function showResult(argComputerMove, argPlayerMove) {
 
-	printMessage('<div class="result">You played ' + argPlayerMove + '</div>', 'messages');
+	printMessage('You played ' + argPlayerMove, 'messages');
 	setTimeout(() => {
 		clearMessages();
-		printMessage('<div class="result">Computer played ' + argComputerMove + '</div>', 'messages');
+		printMessage('Computer played ' + argComputerMove, 'messages');
 		setTimeout(() => {
 			clearMessages();
+			let parent = document.getElementById('messages');
 			if(argComputerMove == argPlayerMove) {
-				printMessage('<div class="result draw">Draw</div>', 'messages');
+				parent.classList.add('draw');
+				printMessage('Draw', 'messages');
 			} else if((argComputerMove == 'rock' && argPlayerMove == 'paper') || (argComputerMove == 'paper' && argPlayerMove == 'scissors') || (argComputerMove == 'scissors' && argPlayerMove == 'rock')) {
-				printMessage('<div class="result win">You Win</div>', 'messages');
+				parent.classList.add('win');
+				printMessage('You Win', 'messages');
 			} else if(argPlayerMove == 'Unknown') {
-				printMessage('<div class="result draw">You picked the wrong variable</div>', 'messages');
+				parent.classList.add('draw');
+				printMessage('You picked the wrong variable', 'messages');
 			} else {
-				printMessage('<div class="result lose">You lose</div>', 'messages');
+				parent.classList.add('lose');
+				printMessage('You lose', 'messages');
 			}
 			setTimeout(() => {
 				clearMessages();
