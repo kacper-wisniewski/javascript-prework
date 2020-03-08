@@ -1,52 +1,93 @@
-function printMessage(msg){
+function printMessage(msg, target) {
 	// Stworzenie diva dla naszego tekstu
 	let div = document.createElement('div');
 	// Przypisanie divowi zawartości msg
 	div.innerHTML = msg;
 	// Przypisanie diva jako dziecko elementu o id 'message'
-	document.getElementById('messages').appendChild(div);
+	document.getElementById(target).appendChild(div);
 }
 
-function clearMessages(){
+function clearMessages() {
 	document.getElementById('messages').innerHTML = '';
 }
 
-function setValue(moveId){
-	console.log('setValue działa', moveId);
-	if(moveId == 1){
-		console.log('kamień', moveId);
-		return 'kamień';
-	} else if(moveId == 2){
-		console.log('papier', moveId);
-		return 'papier';
-	} else if(moveId == 3){
-		console.log('nożyce', moveId);
-		return 'nożyce';
-	} else{
-		console.log('Unknown', moveId);
+function setValue(moveId) {
+	if(moveId == 1) {
+		return 'rock';
+	} else if(moveId == 2) {
+		return 'paper';
+	} else if(moveId == 3) {
+		return 'scissors';
+	} else {
 		printMessage('Nie znam ruchu o id ' + moveId + '.');
-		return 'Nieznany ruch';
+		return 'Unknown';
 	}
 }
 
-function showResult(argComputerMove, argPlayerMove){
-	if(argComputerMove == argPlayerMove){
-		printMessage('Remis');
-	} else if((argComputerMove == 'kamień' && argPlayerMove == 'papier') || (argComputerMove == 'papier' && argPlayerMove == 'nożyce') || (argComputerMove == 'nożyce' && argPlayerMove == 'kamień')){
-		printMessage('Wygrałeś!');
-	} else if(argPlayerMove == 'Nieznany ruch'){
-		printMessage('Brak rozstrzygnięcia');
-	} else{
-		printMessage('Przegrałeś :(');
+function whoWins(argLuckCoefficient, argPlayerMove) {
+
+	let calcMove = Math.floor((Math.random() * 100) + 1);
+	let playerMove = argPlayerMove;
+	let luckCoefficient = argLuckCoefficient
+
+	if(calcMove <= luckCoefficient) {
+		console.log('Player Win');
+		if(playerMove == 'rock') {
+			return 'scissors';
+		} else if(playerMove == 'paper') {
+			return 'rock';
+		} else {
+			return 'scissors';
+		}
+	} else if(calcMove > luckCoefficient && calcMove < ((100 - luckCoefficient) / 2) + luckCoefficient) {
+		console.log('Computer Win');
+		if(playerMove == 'rock') {
+			return 'paper';
+		} else if(playerMove == 'paper') {
+			return 'scisors';
+		} else {
+			return 'rock';
+		}
+	} else {
+		console.log('Draw');
+		return playerMove;
 	}
+
 }
 
-function playGame(argPlayer){
+function showResult(argComputerMove, argPlayerMove) {
+
+	printMessage('<div class="result">You played ' + argPlayerMove + '</div>', 'messages');
+	setTimeout(() => {
+		clearMessages();
+		printMessage('<div class="result">Computer played ' + argComputerMove + '</div>', 'messages');
+		setTimeout(() => {
+			clearMessages();
+			if(argComputerMove == argPlayerMove) {
+				printMessage('<div class="result draw">Draw</div>', 'messages');
+			} else if((argComputerMove == 'rock' && argPlayerMove == 'paper') || (argComputerMove == 'paper' && argPlayerMove == 'scissors') || (argComputerMove == 'scissors' && argPlayerMove == 'rock')) {
+				printMessage('<div class="result win">You Win</div>', 'messages');
+			} else if(argPlayerMove == 'Unknown') {
+				printMessage('<div class="result draw">You picked the wrong variable</div>', 'messages');
+			} else {
+				printMessage('<div class="result lose">You lose</div>', 'messages');
+			}
+			setTimeout(() => {
+				clearMessages();
+			}, 3000);
+		}, 3000);
+	}, 3000);
+	
+	
+	
+	
+}
+
+function playGame(argPlayer, argLuckCoefficient) {
 	clearMessages();
-    let calcMove = Math.floor((Math.random()*3)+1);
-	let computerMove = setValue(calcMove);
 	let playerInput = argPlayer;
 	let playerMove = setValue(playerInput);
+	let computerMove = whoWins(argLuckCoefficient, playerMove);
 
     showResult(computerMove, playerMove);
 }
