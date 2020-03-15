@@ -54,9 +54,31 @@ body {
   color: #fff;
 }
 
+/* Score */
+.scores {
+  width: 100%;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+  -ms-flex-pack: center;
+      justify-content: center;
+  -ms-grid-column-align: center;
+      justify-items: center;
+}
+
+.scores div {
+  display: inline;
+}
+
+.scores span {
+  margin: 0 12px;
+}
+
 /* MSG */
 #messages {
-  height: 150px;
+  margin: 60px auto;
+  height: 300px;
   display: -ms-flexbox;
   display: flex;
   -ms-flex-direction: column;

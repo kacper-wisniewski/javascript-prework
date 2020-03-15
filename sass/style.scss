@@ -57,11 +57,27 @@ body {
     }
 }
 
+/* Score */
+
+.scores {
+    width: 100%;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+    justify-items: center;
+    div {
+        display: inline;
+    }
+    span {
+        margin: 0 12px;
+    }
+}
 
 /* MSG */
 
 #messages {
-    height: 150px;
+    margin: 60px auto;
+    height: 300px;
     display: flex;
     flex-direction: column;
     justify-content: center;

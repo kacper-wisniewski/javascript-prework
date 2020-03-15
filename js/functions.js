@@ -8,8 +8,8 @@ function printMessage(msg, target) {
 	document.getElementById(target).appendChild(div);
 }
 
-function clearMessages() {
-	document.getElementById('messages').innerHTML = '';
+function clearMessages(target) {
+	document.getElementById(target).innerHTML = '';
 }
 
 function setValue(moveId) {
@@ -57,13 +57,13 @@ function whoWins(argLuckCoefficient, argPlayerMove) {
 }
 
 function showResult(argComputerMove, argPlayerMove) {
-
 	printMessage('You played ' + argPlayerMove, 'messages');
+	console.log('showResult');
 	setTimeout(() => {
-		clearMessages();
+		clearMessages('messages');
 		printMessage('Computer played ' + argComputerMove, 'messages');
 		setTimeout(() => {
-			clearMessages();
+			clearMessages('messages');
 			let parent = document.getElementById('messages');
 			if(argComputerMove == argPlayerMove) {
 				parent.classList.add('draw');
@@ -71,15 +71,23 @@ function showResult(argComputerMove, argPlayerMove) {
 			} else if((argComputerMove == 'rock' && argPlayerMove == 'paper') || (argComputerMove == 'paper' && argPlayerMove == 'scissors') || (argComputerMove == 'scissors' && argPlayerMove == 'rock')) {
 				parent.classList.add('win');
 				printMessage('You Win', 'messages');
+				clearMessages('player');
+				argPlayerScore++;
+				printMessage(argplayerScore, 'player');
 			} else if(argPlayerMove == 'Unknown') {
 				parent.classList.add('draw');
 				printMessage('You picked the wrong variable', 'messages');
 			} else {
 				parent.classList.add('lose');
 				printMessage('You lose', 'messages');
+				clearMessages('computer');
+				argComputerScore++;
+				printMessage(argcomputerScore, 'computer');
 			}
+			
 			setTimeout(() => {
-				clearMessages();
+				clearMessages('messages');
+				document.getElementById('messages').className = "";
 			}, 3000);
 		}, 3000);
 	}, 3000);
@@ -90,10 +98,9 @@ function showResult(argComputerMove, argPlayerMove) {
 }
 
 function playGame(argPlayer, argLuckCoefficient) {
-	clearMessages();
+	clearMessages('messages');
 	let playerInput = argPlayer;
 	let playerMove = setValue(playerInput);
 	let computerMove = whoWins(argLuckCoefficient, playerMove);
-
     showResult(computerMove, playerMove);
 }
