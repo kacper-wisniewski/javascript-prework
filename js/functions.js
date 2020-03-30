@@ -1,3 +1,6 @@
+let argPlayerScore = 0,
+	argComputerScore = 0,
+	enable = false;
 function printMessage(msg, target) {
 	// Stworzenie diva dla naszego tekstu
 	let div = document.createElement('div');
@@ -10,6 +13,12 @@ function printMessage(msg, target) {
 
 function clearMessages(target) {
 	document.getElementById(target).innerHTML = '';
+}
+
+function buttonBlock(isEnable) {
+	document.getElementById('rock').disabled = isEnable;
+	document.getElementById('paper').disabled = isEnable;
+	document.getElementById('scissors').disabled = isEnable;
 }
 
 function setValue(moveId) {
@@ -73,7 +82,7 @@ function showResult(argComputerMove, argPlayerMove) {
 				printMessage('You Win', 'messages');
 				clearMessages('player');
 				argPlayerScore++;
-				printMessage(argplayerScore, 'player');
+				printMessage(argPlayerScore, 'player');
 			} else if(argPlayerMove == 'Unknown') {
 				parent.classList.add('draw');
 				printMessage('You picked the wrong variable', 'messages');
@@ -82,12 +91,14 @@ function showResult(argComputerMove, argPlayerMove) {
 				printMessage('You lose', 'messages');
 				clearMessages('computer');
 				argComputerScore++;
-				printMessage(argcomputerScore, 'computer');
+				printMessage(argComputerScore, 'computer');
 			}
 			
 			setTimeout(() => {
 				clearMessages('messages');
 				document.getElementById('messages').className = "";
+				enable = false;
+				buttonBlock(enable);
 			}, 3000);
 		}, 3000);
 	}, 3000);
@@ -102,5 +113,7 @@ function playGame(argPlayer, argLuckCoefficient) {
 	let playerInput = argPlayer;
 	let playerMove = setValue(playerInput);
 	let computerMove = whoWins(argLuckCoefficient, playerMove);
-    showResult(computerMove, playerMove);
+	showResult(computerMove, playerMove);
+	enable = true;
+	buttonBlock(enable);
 }
